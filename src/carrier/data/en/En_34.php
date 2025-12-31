@@ -140,7 +140,6 @@ class En_34
         346214 => 'Republica Movil',
         346215 => 'Aire Networks',
         346216 => 'Republica Movil',
-        346218 => 'Vodafone',
         346230 => 'Yoigo',
         346231 => 'Yoigo',
         346236 => 'Altecom',

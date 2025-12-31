@@ -249,13 +249,17 @@ class PhoneNumberMatcher implements Iterator
      * @throws InvalidArgumentException
      * @internal @see PhoneNumberUtil::findNumbers() instead
      */
+    protected $phoneUtil;
+    protected $text;
     public function __construct(
-        protected readonly PhoneNumberUtil $phoneUtil,
-        protected readonly string $text,
+        $phoneUtil,
+        $text,
         ?string $country,
         AbstractLeniency $leniency,
-        int $maxTries,
+        int $maxTries
     ) {
+        $this->phoneUtil = $phoneUtil;
+        $this->text = $text;
         if ($maxTries < 0) {
             throw new InvalidArgumentException();
         }
@@ -463,7 +467,7 @@ class PhoneNumberMatcher implements Iterator
                 $number->clearPreferredDomesticCarrierCode();
                 return new PhoneNumberMatch($offset, $candidate, $number);
             }
-        } catch (NumberParseException) {
+        } catch (NumberParseException $e) {
             // ignore and continue
         }
         return null;

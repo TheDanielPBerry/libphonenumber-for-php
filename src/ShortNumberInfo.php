@@ -36,10 +36,15 @@ class ShortNumberInfo
         'NI',
     ];
 
+    protected $matcherAPI;
+    protected $metadataSource;
     protected function __construct(
-        protected MatcherAPIInterface $matcherAPI,
-        protected MetadataSourceInterface $metadataSource = new MultiFileMetadataSourceImpl(__NAMESPACE__ . '\data\ShortNumberMetadata_'),
+        $matcherAPI,
+        $metadataSource = null
     ) {
+        $this->matcherAPI = $matcherAPI;
+        $this->metadataSource = $metadataSource ?? new MultiFileMetadataSourceImpl(__NAMESPACE__ . '\data\ShortNumberMetadata_');
+
         // TODO: Create ShortNumberInfo for a given map
         $this->countryCallingCodeToRegionCodeMap = CountryCodeToRegionCodeMap::COUNTRY_CODE_TO_REGION_CODE_MAP;
 
@@ -131,7 +136,7 @@ class ShortNumberInfo
 
         try {
             return $this->metadataSource->getMetadataForRegion($regionCode);
-        } catch (RuntimeException) {
+        } catch (RuntimeException $e) {
             return null;
         }
     }
@@ -460,7 +465,7 @@ class ShortNumberInfo
      *                         the number does not match a cost category. Note that an invalid number may match any cost
      *                         category.
      */
-    public function getExpectedCostForRegion(PhoneNumber $number, string $regionDialingFrom): ShortNumberCost
+    public function getExpectedCostForRegion(PhoneNumber $number, string $regionDialingFrom)
     {
         if (!$this->regionDialingFromMatchesNumber($number, $regionDialingFrom)) {
             return ShortNumberCost::UNKNOWN_COST;
@@ -525,7 +530,7 @@ class ShortNumberInfo
      * @return ShortNumberCost the highest expected cost category of the short number in the region(s) with the given
      *                         country calling code
      */
-    public function getExpectedCost(PhoneNumber $number): ShortNumberCost
+    public function getExpectedCost(PhoneNumber $number)
     {
         $regionCodes = $this->getRegionCodesForCountryCode($number->getCountryCode());
 

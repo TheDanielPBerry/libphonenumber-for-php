@@ -142,7 +142,7 @@ class Matcher
         return preg_replace('/' . $this->pattern . '/x', $replacement, $this->subject);
     }
 
-    public function reset(string $input = ''): static
+    public function reset(string $input = '')
     {
         $this->subject = $input;
 
