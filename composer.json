@@ -52,7 +52,7 @@
   },
   "require": {
     "php": "^7.2",
-    "giggsey/locale": "^2.7",
+    "thedanielpberry/Locale": "dev-main",
     "symfony/polyfill-mbstring": "^1.31"
   },
   "require-dev": {
