@@ -80,11 +80,6 @@
   "replace": {
     "giggsey/libphonenumber-for-php-lite": "self.version"
   },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "9.x-dev"
-    }
-  },
   "scripts": {
     "cs": "vendor/bin/php-cs-fixer fix",
     "phpstan": "vendor/bin/phpstan",
