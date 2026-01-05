@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace libphonenumber\geocoding;
 
-use Giggsey\Locale\Locale;
+use TheDanielPBerry\Locale\Locale;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumber;
 use libphonenumber\PhoneNumberType;

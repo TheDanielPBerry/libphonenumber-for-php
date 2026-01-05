@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace libphonenumber;
 
-use Giggsey\Locale\Locale;
+use TheDanielPBerry\Locale\Locale;
 use libphonenumber\prefixmapper\PrefixFileReader;
 
 /**
