@@ -1,5 +1,5 @@
 {
-  "name": "giggsey/libphonenumber-for-php",
+  "name": "thedanielpberry/libphonenumber-for-php",
   "type": "library",
   "description": "A library for parsing, formatting, storing and validating international phone numbers, a PHP Port of Google's libphonenumber.",
   "repositories" : [
@@ -58,7 +58,7 @@
   },
   "require": {
     "php": "^7.2",
-    "thedanielpberry/locale": "dev-main",
+    "thedanielpberry/locale": "dev-master",
     "symfony/polyfill-mbstring": "^1.31"
   },
   "require-dev": {
